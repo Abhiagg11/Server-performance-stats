@@ -6,4 +6,4 @@ COPY server-stats.sh .
 
 RUN chmod +x server-stats.sh
 
-CMD ["bash",
+CMD ["./server-stats.sh"]
