@@ -9,13 +9,13 @@ It is designed to help understand basic Linux monitoring and system diagnostics.
 
 ## ⚙️ Features
 
-- Displays system uptime
-- Shows CPU usage
-- Shows memory usage
-- Shows disk usage
-- Lists top 5 CPU-consuming processes
-- Lists top 5 memory-consuming processes
-- Displays logged-in users
+- Displays system uptime  
+- Shows CPU usage  
+- Shows memory usage  
+- Shows disk usage  
+- Lists top 5 CPU-consuming processes  
+- Lists top 5 memory-consuming processes  
+- Displays logged-in users  
 
 ---
 
@@ -29,6 +29,3 @@ It is designed to help understand basic Linux monitoring and system diagnostics.
 ```bash
 chmod +x server-stats.sh
 ./server-stats.sh
-
-## Project URL
-https://github.com/Abhiagg11/Server-performance-stats
