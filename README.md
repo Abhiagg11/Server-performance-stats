@@ -29,3 +29,5 @@ It is designed to help understand basic Linux monitoring and system diagnostics.
 ```bash
 chmod +x server-stats.sh
 ./server-stats.sh
+
+##Porject URL - https://roadmap.sh/projects/server-stats
