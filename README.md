@@ -29,3 +29,8 @@ It is designed to help understand basic Linux monitoring and system diagnostics.
 ```bash
 chmod +x server-stats.sh
 ./server-stats.sh
+
+---
+
+## project URL
+https://github.com/Abhiagg11/Server-performance-stats/tree/main
