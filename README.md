@@ -33,4 +33,4 @@ chmod +x server-stats.sh
 ---
 
 ## project URL
-https://github.com/Abhiagg11/Server-performance-stats/tree/main
+https://github.com/Abhiagg11/Server-performance-stats
