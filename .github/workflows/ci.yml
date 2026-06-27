@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - dev
 
 jobs:
   run-script:
@@ -32,7 +33,15 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USER }}/server-stats:latest
 
       - name: Tag Docker image with version
-        run: docker tag server-stats ${{ secrets.DOCKER_USER }}/server-stats:v1
+        run: docker tag server-stats ${{ secrets.DOCKER_USER }}/server-stats:${{ env.TAG }}
 
       - name: Push version image
-        run: docker push ${{ secrets.DOCKER_USER }}/server-stats:v1
+        run: docker push ${{ secrets.DOCKER_USER }}/server-stats:${{ env.TAG }}
+
+      - name: Set image tag
+        run: |
+              if [ "${GITHUB_REF##*/}" = "main" ]; then
+                echo "TAG=prod" >> $GITHUB_ENV
+              else
+                echo "TAG=dev" >> $GITHUB_ENV
+              fi
