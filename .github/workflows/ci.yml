@@ -30,3 +30,9 @@ jobs:
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USER }}/server-stats:latest
+
+      - name: Tag Docker image with version
+        run: docker tag server-stats ${{ secrets.DOCKER_USER }}/server-stats:v1
+
+      - name: Push version image
+        run: docker push ${{ secrets.DOCKER_USER }}/server-stats:v1
