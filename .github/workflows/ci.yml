@@ -50,7 +50,9 @@ jobs:
         run: |
           chmod +x server-stats.sh
           ./server-stats.sh > output.txt
+          ls -l
+          cat output.txt
 
       - name: Validate output
         run: |
-          grep "SERVER PERFORMANCE STATS REPORT" output.txt
+          grep -q "SERVER PERFORMANCE STATS REPORT" output.txt || exit 1
