@@ -45,3 +45,12 @@ jobs:
 
       - name: Push version image
         run: docker push ${{ secrets.DOCKER_USER }}/server-stats:${{ env.TAG }}
+
+      - name: Test script execution
+        run: |
+          chmod +x server-stats.sh
+          ./server-stats.sh > output.txt
+
+      - name: Validate output
+        run: |
+          grep "SERVER PERFORMANCE STATS REPORT" output.txt
