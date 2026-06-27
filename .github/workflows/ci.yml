@@ -10,6 +10,18 @@ jobs:
   run-script:
     runs-on: ubuntu-latest
 
+  deploy-prod:
+    runs-on: ubuntu-latest
+    needs: run-script
+    if: github.ref == 'refs/heads/main'
+
+    environment:
+      name: Production-practice
+
+    steps:
+      - name: Final deployment step
+        run: echo "Deployment approved. Running production release."
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -56,15 +68,3 @@ jobs:
       - name: Validate output
         run: |
           grep -q "SERVER PERFORMANCE STATS REPORT" output.txt || exit 1
-
-deploy-prod:
-    runs-on: ubuntu-latest
-    needs: run-script
-    if: github.ref == 'refs/heads/main'
-
-    environment:
-      name: Production-practice
-
-    steps:
-      - name: Final deployment step
-        run: echo "Deployment approved. Running production release."
