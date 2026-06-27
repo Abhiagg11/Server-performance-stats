@@ -26,6 +26,14 @@ jobs:
       - name: Login to Docker Hub
         run: echo "${{ secrets.DOCKER_PASS }}" | docker login -u "${{ secrets.DOCKER_USER }}" --password-stdin
 
+      - name: Set image tag
+        run: |
+          if [ "${GITHUB_REF##*/}" = "main" ]; then
+            echo "TAG=prod" >> $GITHUB_ENV
+          else
+            echo "TAG=dev" >> $GITHUB_ENV
+          fi
+
       - name: Tag Docker image
         run: docker tag server-stats ${{ secrets.DOCKER_USER }}/server-stats:latest
 
@@ -37,11 +45,3 @@ jobs:
 
       - name: Push version image
         run: docker push ${{ secrets.DOCKER_USER }}/server-stats:${{ env.TAG }}
-
-      - name: Set image tag
-        run: |
-              if [ "${GITHUB_REF##*/}" = "main" ]; then
-                echo "TAG=prod" >> $GITHUB_ENV
-              else
-                echo "TAG=dev" >> $GITHUB_ENV
-              fi
