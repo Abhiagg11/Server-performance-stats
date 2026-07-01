@@ -7,5 +7,3 @@ COPY server-stats.sh .
 RUN chmod +x server-stats.sh
 
 CMD ["./server-stats.sh"]
-
- -- Close
